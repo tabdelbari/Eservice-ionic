@@ -1,0 +1,12 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Position de recherche</ion-title>
+      <ion-button class="ion-margin-end" slot="end" shape="round" color="light" (click)="dismissPosition()"><ion-icon name="paper-plane"></ion-icon></ion-button>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+    <ion-button shape="round" type="submit" expand="full" color="primary" (click)="reset()" >Ma position</ion-button>
+    <div #mapElement class="map">
+      
+    </div>
+  </ion-content>

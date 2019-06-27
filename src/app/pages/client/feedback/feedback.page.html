@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Feedback</ion-title>
+      <ion-button class="ion-margin-end" slot="end" shape="round" color="light" (click)="dismissFeedback()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+    <ion-row>
+      <ion-button (click)="setStar(1)">
+        <ion-icon *ngIf="feedback < 1" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="feedback>=1" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setStar(2)">
+        <ion-icon *ngIf="feedback < 2" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="feedback>=2" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setStar(3)">
+        <ion-icon *ngIf="feedback < 3" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="feedback>=3" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setStar(4)">
+        <ion-icon *ngIf="feedback < 4" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="feedback>=4" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setStar(5)">
+        <ion-icon *ngIf="feedback < 5" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="feedback>=6" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+    </ion-row>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button shape="round" type="submit" expand="full" color="primary" (click)="send()" >Envoyer</ion-button>
+    </ion-toolbar>
+  </ion-footer>

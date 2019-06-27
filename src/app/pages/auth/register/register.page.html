@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+    <ion-button class="ion-margin-end" slot="end" shape="round" color="light" (click)="dismissRegister()"><ion-icon name="close"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+    <ion-item class="ion-margin-bottom">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input required ngModel name="name"></ion-input>
+    </ion-item>
+  
+    <ion-item class="ion-margin-bottom">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input required email type="email" ngModel name="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input required type="password" ngModel name="password"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input required type="password" ngModel name="password_confirmation"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-label >Specialiste</ion-label>
+      <ion-toggle slot="end"  (ionChange)="specialiste=!specialiste"></ion-toggle>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom" *ngIf="specialiste">
+      <ion-label position="floating">Salaire</ion-label>
+      <ion-input required="true" type="number" ngModel name="salaire"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom" *ngIf="specialiste">
+      <ion-label >Tel</ion-label>
+      <ion-input tel required="true" type="tel" ngModel name="tel"></ion-input>
+    </ion-item>
+
+    <h5 *ngIf="specialiste" >Specialites</h5>
+    <ion-list *ngIf="specialiste">
+      <ion-chip *ngFor="let tag of tag_liste" (click)="addTag(tag)">
+        <ion-label>{{tag.nom}}</ion-label>
+      </ion-chip>
+    </ion-list>
+    <h5 *ngIf="specialiste">Specialites selectionnées</h5>
+    <ion-list *ngIf="specialiste">
+      <ion-chip *ngFor="let tag of user_tags" (click)="removeTag(tag)">
+        <ion-label>{{tag.nom}}</ion-label>
+      </ion-chip>
+    </ion-list>
+    <ion-button class="ion-margin-bottom" shape="round" type="submit" expand="full" color="secondary">Register</ion-button>
+  </form>
+  <p text-center>Already have a account?</p>
+  <ion-button shape="round" expand="full" color="primary" (click)="loginModal()">Login</ion-button>
+</ion-content>  

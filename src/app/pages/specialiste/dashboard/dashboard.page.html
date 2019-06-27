@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Demmandes proches</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let demmande of demmandes">
+      <ion-item [color]="demmande.etat?'medium':''">
+          <ion-label text-wrap>
+              <ion-text color="primary">
+                <h3>{{demmande.titre}}<ion-icon *ngIf="demmande.etat" color="primary" slot="icon-only" name="checkmark-circle"></ion-icon><ion-icon *ngIf="demmande.interesse" color="primary" slot="icon-only" name="hand"></ion-icon></h3>
+              </ion-text>
+              <p>{{demmande.description}}</p>
+              <ion-text color="secondary">
+                  <p> estim: {{demmande.estimation}}</p>
+              </ion-text>
+          </ion-label>
+          <ion-badge class="ion-no-margin" *ngFor="let tag of demmande.tags" slot="end">{{tag.nom}}</ion-badge>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-button  (click)="interesser(demmande)" color="danger">
+            <ion-icon slot="icon-only" name="hand"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button shape="round" type="submit" expand="full" color="primary" (click)="position()" >Changer position</ion-button>
+  </ion-toolbar>
+</ion-footer>

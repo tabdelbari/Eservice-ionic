@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar> 
+    <ion-title>Details</ion-title>
+    <ion-button class="ion-margin-end" slot="end" shape="round" color="light" (click)="dismissDetails()"><ion-icon name="close"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{demmande.titre}}<ion-icon *ngIf="demmande.etat" name="checkmark-circle"></ion-icon></ion-card-title>
+      <ion-card-subtitle>{{demmande.estimation}}</ion-card-subtitle>      
+    </ion-card-header> 
+    <ion-card-content>
+      {{demmande.description}}
+    </ion-card-content>
+    <ion-card-content>
+        <ion-badge class="ion-no-margin" *ngFor="let tag of demmande.tags" slot="end">{{tag.nom}}</ion-badge>
+      </ion-card-content>
+  </ion-card>
+  <ion-list>
+      <ion-item-sliding *ngFor="let user of demmande.specialistes">
+        <ion-item >
+            <ion-label text-wrap>
+                <ion-text color="primary">
+                  <h3>{{user.name}}</h3>
+                </ion-text>
+                <p>{{user.email}} / {{user.tel}}</p>
+                <ion-text color="secondary">
+                    <p> points: {{user.excellence}}</p>
+                </ion-text>
+            </ion-label>
+        </ion-item>
+        <ion-item-options *ngIf="!demmande.etat" side="end">
+          <ion-button  (click)="feedback(user)" color="danger">
+              <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+</ion-content>

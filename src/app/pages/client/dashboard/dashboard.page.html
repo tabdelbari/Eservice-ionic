@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mes demmandes</ion-title>
+    <ion-button class="ion-margin-end" (click)="add()" slot="end" shape="round" color="light"><ion-icon slot="icon-only" name="add-circle-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let demmande of demmandes">
+      <ion-item (click)="details(demmande)" [color]="demmande.etat?'medium':''">
+          <ion-label text-wrap>
+              <ion-text color="primary">
+                <h3>{{demmande.titre}}<ion-icon *ngIf="demmande.etat" name="checkmark-circle"></ion-icon></h3>
+              </ion-text>
+              <p>{{demmande.description}}</p>
+              <ion-text color="secondary">
+                  <p> estim: {{demmande.estimation}}</p>
+              </ion-text>
+          </ion-label>
+          <ion-badge class="ion-no-margin" *ngFor="let tag of demmande.tags" slot="end">{{tag.nom}}</ion-badge>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-button  (click)="supprimer(demmande)" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

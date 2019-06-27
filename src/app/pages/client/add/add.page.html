@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Creer une demmande</ion-title>
+    <ion-button class="ion-margin-end" slot="end" shape="round" color="light" (click)="dismissAdd()"><ion-icon name="close"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <h5>Specialites</h5>
+  <ion-list>
+    <ion-chip *ngFor="let tag of tag_liste" (click)="addTag(tag)">
+      <ion-label>{{tag.nom}}</ion-label>
+    </ion-chip>
+  </ion-list>
+  <h5>Specialites selectionnées</h5>
+  <ion-list>
+    <ion-chip *ngFor="let tag of demmande_tags" (click)="removeTag(tag)">
+      <ion-label>{{tag.nom}}</ion-label>
+    </ion-chip>
+  </ion-list>
+  <form #form="ngForm">
+    <ion-item>
+      <ion-label position="floating">Titre</ion-label>
+      <ion-input required ngModel type="text" name="titre"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input required ngModel type="text" name="description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Estimation</ion-label>
+      <ion-input required ngModel type="number" name="estimation"></ion-input>
+    </ion-item> 
+  </form>
+  <div #mapElement class="map">
+    
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button shape="round" type="submit" expand="full" color="primary" (click)="add(form)" >Creer</ion-button>
+  </ion-toolbar>
+</ion-footer>

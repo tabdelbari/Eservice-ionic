@@ -1,5 +1,7 @@
 {
   "name": "eService",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
